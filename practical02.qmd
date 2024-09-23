@@ -1,6 +1,6 @@
 ---
 title: "Getting started with R"
-author: Your name here
+author: "Kliment Berbatov"
 date: today
 format: html
 ---
@@ -11,15 +11,17 @@ format: html
 
 ```{r}
 # Your answer in code
+c('A','B','C')
 
 ```
 > Your answer as text
-
+[1] "A" "B" "C"
 
 
 * Assign the vector to a variable `my_letters`
 ```{r}
 # Your answer in code
+my_letters <- c('A','B','C')
 
 ```
 
@@ -27,33 +29,35 @@ format: html
 * Check the what happens when you run `letters` (just this) on the command line.
 ```{r}
 # Your answer in code
+letters
 
 ```
 
 > Your answer as text
-
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r"
+[19] "s" "t" "u" "v" "w" "x" "y" "z"
 
 
 * What happens when you concatenate two vectors? Add `c(my_letters , my_letters)`
 ```{r}
 # Your answer in code
-
+c(my_letters,my_letters)
 
 ```
 
 > Your answer as text
-
+[1] "A" "B" "C" "A" "B" "C"
 
 
 * Add the number 1 to letters. What happens to the type of the vector?
 ```{r}
 # Your answer in code
-
+letters + 1
 
 ```
 
 > Your answer as text
-
+Error in letters + 1 : non-numeric argument to binary operator
 
 
 ### Exercise 2
@@ -65,10 +69,9 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
-
-
+my_vec <- 1:8
+my_vec <- my_vec + 2
+my_vec <-  my_vec + 1:4
 
 ```
 
@@ -95,11 +98,12 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
-
-
-
+A <- matrix(c(4,9,10,1,5,7),ncol = 2,nrow = 3)
+dim(A)
+el <- A[2,2]
+A <- cbind(A,c(0,0,0))
+A[1,1] <- 0
+t(A)
 
 ```
 
@@ -107,12 +111,14 @@ format: html
 8. Are any values in `A` larger than 10? 
 ```{r}
 # Your answer in code
+A[A>10]
 
 ```
 
 9. Are all values in `A` smaller than 10?
 ```{r}
 # Your answer in code
+all(A<10)
 
 ```
 
@@ -122,10 +128,9 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
-
-
+foo <- function(x,y) {
+  as.numeric(x) + as.numeric(y)
+}
 
 ```
 
@@ -136,7 +141,9 @@ format: html
 
 ```{r}
 # Your answer in code
-
+mmsd <- function(x) {
+  c(mean(x,na.rm = TRUE),median(x,na.rm = TRUE),var(x,na.rm = TRUE))
+}
 
 
 ```
@@ -148,7 +155,10 @@ The output of `c('1' , "a", NA, "2", NA)` should be 2.
 
 ```{r}
 # Your answer in code
-
+vec <- c('1' , "a", NA, "2", NA)
+vec|>
+  is.na()|>
+  sum()
 
 
 ```
